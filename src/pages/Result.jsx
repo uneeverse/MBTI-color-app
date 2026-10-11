@@ -5,7 +5,7 @@ import { SERVICE_NAME } from '../data/quiz.js'
 import { copyText } from '../lib/clipboard.js'
 import { judge } from '../lib/judge.js'
 import { saveImage } from '../lib/exportImage.js'
-import { copyLink, shareSns } from '../lib/share.js'
+import { copyLink, shareKakao, shareSns } from '../lib/share.js'
 import { clearAnswers, loadAnswers } from '../lib/storage.js'
 import ShareDialog from '../components/ShareDialog.jsx'
 import ResultCard from '../components/ResultCard.jsx'
@@ -43,6 +43,16 @@ export default function Result() {
 
   async function copyShareLink() {
     toast((await copyLink(shareUrl)) ? '링크가 복사됐어요' : '링크를 복사하지 못했어요')
+  }
+
+  async function shareToKakao() {
+    const result = await shareKakao({
+      url: shareUrl,
+      title: `${SERVICE_NAME} ${code}: ${palette.name}`,
+      description: '나의 MBTI 색 팔레트를 확인해 보세요',
+    })
+    if (result === 'unavailable') toast('카카오톡 공유를 사용할 수 없어요')
+    else if (result === 'failed') toast('카카오톡 공유에 실패했어요')
   }
 
   async function shareToSns() {
@@ -95,6 +105,7 @@ export default function Result() {
         onClose={() => setShareOpen(false)}
         onSaveImage={download}
         onCopyLink={copyShareLink}
+        onShareKakao={shareToKakao}
         onShareSns={shareToSns}
       />
       {toastNode}

@@ -96,6 +96,7 @@ main:focus { outline: none; }
 .share-dialog .link { margin-top: 8px; }
 .share-options { display: flex; flex-direction: column; gap: 12px; }
 .share-options .btn { word-break: keep-all; }
+.share-options .btn.kakao { background: #fee500; border-color: #fee500; color: #191919; }
 @media (max-width: 400px) {
   .actions { gap: 8px; }
   .actions .btn { padding: 12px 8px; font-size: 0.9rem; }

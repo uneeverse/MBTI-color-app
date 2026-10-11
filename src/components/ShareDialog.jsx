@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 // 공유 방법을 고르는 팝업. 바깥 영역을 누르거나 Esc를 누르면 닫힌다.
-export default function ShareDialog({ open, onClose, onSaveImage, onCopyLink, onShareSns }) {
+export default function ShareDialog({ open, onClose, onSaveImage, onCopyLink, onShareKakao, onShareSns }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -36,6 +36,9 @@ export default function ShareDialog({ open, onClose, onSaveImage, onCopyLink, on
           </button>
           <button type="button" className="btn" onClick={() => run(onCopyLink)}>
             링크 복사
+          </button>
+          <button type="button" className="btn kakao" onClick={() => run(onShareKakao)}>
+            카카오톡 공유
           </button>
           <button type="button" className="btn" onClick={() => run(onShareSns)}>
             SNS 공유
