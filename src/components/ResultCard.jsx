@@ -85,7 +85,6 @@ export default function ResultCard({ code, name, color }) {
       <div className="result-card__legend">
         <p className="result-card__code">{code}</p>
         <h1 className="result-card__name">{name}</h1>
-        <p className="result-card__sub">{color}</p>
       </div>
     </section>
   )

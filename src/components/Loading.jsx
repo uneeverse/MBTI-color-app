@@ -34,7 +34,7 @@ export default function Loading() {
   }, [])
 
   return (
-    <main className="page loading" ref={mainRef} aria-busy="true">
+    <main className="page loading" ref={mainRef} aria-label="결과를 만드는 중이에요">
       <div className="loading-visual" aria-hidden="true">
         {reduced ? (
           <div className="loading-static" />

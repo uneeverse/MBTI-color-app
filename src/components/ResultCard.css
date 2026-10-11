@@ -21,8 +21,6 @@
 .result-card__legend p { margin: 0; }
 .result-card__code { font-size: 4rem; font-weight: 700; line-height: 68px; letter-spacing: 0.02em; }
 .result-card__name { margin: 0; font-size: 1.5rem; font-weight: 500; }
-.result-card__sub { margin-top: 55px !important; font-size: 1rem; font-weight: 500; }
 @media (max-width: 420px) {
   .result-card__code { font-size: 3rem; line-height: 1.2; }
-  .result-card__sub { margin-top: 24px !important; }
 }

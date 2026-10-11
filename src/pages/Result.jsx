@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom'
 import { PALETTES, findType } from '../data/palettes.js'
 import { SERVICE_NAME } from '../data/quiz.js'
 import { copyText } from '../lib/clipboard.js'
-import { contrastText } from '../lib/color.js'
 import { saveImage } from '../lib/exportImage.js'
 import { judge } from '../lib/judge.js'
 import { shareLink } from '../lib/share.js'
@@ -70,12 +69,10 @@ export default function Result() {
             <button
               type="button"
               className="chip"
-              style={{ background: hex, color: contrastText(hex) }}
+              style={{ background: hex }}
               onClick={() => copyHex(hex)}
               aria-label={`${hex} 복사`}
-            >
-              {hex}
-            </button>
+            />
           </li>
         ))}
       </ul>
