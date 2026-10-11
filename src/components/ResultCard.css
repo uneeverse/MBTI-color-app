@@ -1,0 +1,28 @@
+/* 피그마 Interactive Eye Following Card 기준 (크림 배경 #fbf0dc, 패딩 18px) */
+.result-card {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 18px; background: #fbf0dc; color: #000; text-align: left;
+}
+.result-card__monster {
+  display: flex; align-items: center; justify-content: center;
+  height: 432px; max-height: 80vw; padding: 0 22px; overflow: hidden;
+}
+.result-card__eyes { display: flex; gap: 4px; width: 100%; max-width: 412px; }
+.result-card__eye {
+  position: relative; flex: 1 1 0; min-width: 0; max-width: 204px; aspect-ratio: 1;
+  border-radius: 50%; background: #fbf0dc; overflow: hidden;
+}
+.result-card__pupil {
+  position: absolute; top: 50%; left: 50%; width: 37.25%; aspect-ratio: 1;
+  border-radius: 50%; background: #000; will-change: transform;
+  transform: translate(-50%, -50%);
+}
+.result-card__legend { display: flex; flex-direction: column; padding: 9px 0; }
+.result-card__legend p { margin: 0; }
+.result-card__code { font-size: 4rem; font-weight: 700; line-height: 68px; letter-spacing: 0.02em; }
+.result-card__name { margin: 0; font-size: 1.5rem; font-weight: 500; }
+.result-card__sub { margin-top: 55px !important; font-size: 1rem; font-weight: 500; }
+@media (max-width: 420px) {
+  .result-card__code { font-size: 3rem; line-height: 1.2; }
+  .result-card__sub { margin-top: 24px !important; }
+}

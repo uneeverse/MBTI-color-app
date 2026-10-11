@@ -8,6 +8,7 @@ import { saveImage } from '../lib/exportImage.js'
 import { judge } from '../lib/judge.js'
 import { shareLink } from '../lib/share.js'
 import { clearAnswers, loadAnswers } from '../lib/storage.js'
+import ResultCard from '../components/ResultCard.jsx'
 import { useToast } from '../components/Toast.jsx'
 import NotFound from './NotFound.jsx'
 
@@ -62,8 +63,7 @@ export default function Result() {
   return (
     <main className="page result">
       {!mine && retry}
-      <p className="code">{code}</p>
-      <h1>{palette.name}</h1>
+      <ResultCard code={code} name={palette.name} color={palette.colors[0]} />
       <ul className="chips">
         {palette.colors.map((hex) => (
           <li key={hex}>

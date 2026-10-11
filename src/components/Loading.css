@@ -1,0 +1,30 @@
+/* 로딩 화면 */
+.loading { gap: 16px; }
+.loading-visual {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading-visual > div { width: 100%; height: 100%; }
+.loading-visual svg { width: 100%; height: 100%; }
+/* 움직임 줄이기 사용자용 정적 원형 표시 */
+.loading-static {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 6px solid var(--line);
+  border-top-color: var(--accent);
+}
+.loading-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-visual,
+  .loading-visual * { animation: none !important; transition: none !important; }
+}

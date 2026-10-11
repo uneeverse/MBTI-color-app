@@ -1,13 +1,27 @@
+import { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import Loading from '../components/Loading.jsx'
 import { QUESTIONS } from '../data/quiz.js'
 import { judge } from '../lib/judge.js'
 import { loadAnswers, saveAnswers } from '../lib/storage.js'
+
+const LOADING_MS = 1800
 
 export default function Quiz() {
   const { step } = useParams()
   const navigate = useNavigate()
   const n = Number(step)
   const total = QUESTIONS.length
+  // 마지막 답을 고르면 로딩 화면을 잠시 보여 준 뒤 결과로 이동한다
+  const [pendingCode, setPendingCode] = useState(null)
+
+  useEffect(() => {
+    if (!pendingCode) return
+    const timer = setTimeout(() => navigate(`/result/${pendingCode}`), LOADING_MS)
+    return () => clearTimeout(timer)
+  }, [pendingCode, navigate])
+
+  if (pendingCode) return <Loading />
 
   if (!Number.isInteger(n) || n < 1 || n > total) return <Navigate to="/quiz/1" replace />
 
@@ -27,7 +41,8 @@ export default function Quiz() {
     if (n === total) {
       const code = judge(next)
       // 판정할 수 없으면 처음부터 다시 시작한다
-      navigate(code ? `/result/${code}` : '/quiz/1')
+      if (code) setPendingCode(code)
+      else navigate('/quiz/1')
     } else {
       navigate(`/quiz/${n + 1}`)
     }
