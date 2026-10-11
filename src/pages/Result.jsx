@@ -16,12 +16,13 @@ export default function Result() {
   const code = findType(rawCode)
   const [toast, toastNode] = useToast()
   const [failedText, setFailedText] = useState(null)
+  // 화면에 들어올 때 한 번만 판정한다 (다시하기로 답을 지워도 버튼 문구가 바뀌지 않게)
+  const [mine] = useState(() => !!code && judge(loadAnswers()) === code)
 
   // 없는 유형 주소는 안내·오류 화면을 보여 준다
   if (!code) return <NotFound />
 
   const palette = PALETTES[code]
-  const mine = judge(loadAnswers()) === code
 
   async function copyHex(hex) {
     if (await copyText(hex)) {
@@ -94,9 +95,6 @@ export default function Result() {
         </button>
         {mine && retry}
       </div>
-      <Link className="link" to="/types">
-        전체 유형 보기
-      </Link>
       {toastNode}
     </main>
   )

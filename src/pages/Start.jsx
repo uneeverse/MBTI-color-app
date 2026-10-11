@@ -20,9 +20,6 @@ export default function Start() {
       <Link className="btn primary" to="/quiz/1" onClick={clearAnswers}>
         시작하기
       </Link>
-      <Link className="link" to="/types">
-        전체 유형 보기
-      </Link>
     </main>
   )
 }
