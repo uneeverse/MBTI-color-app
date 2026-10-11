@@ -19,8 +19,31 @@
     --accent-text: #14141a;
   }
 }
+@property --blob-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #a58be0;
+}
+.blob {
+  --blob-color: var(--accent);
+  position: fixed; top: 0; left: 0; z-index: -1;
+  width: 480px; height: 480px; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--blob-color) 38%, transparent) 0%, transparent 70%);
+  filter: blur(24px);
+  pointer-events: none; will-change: transform;
+  transition: --blob-color 0.8s ease;
+}
+.page-transition { animation: page-in 0.45s ease-out backwards; }
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-transition { animation: none; }
+  .blob { transition: none; }
+}
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); }
+body { margin: 0; }
 .page {
   max-width: 480px;
   margin: 0 auto;
@@ -48,6 +71,7 @@ h1 { margin: 0; font-size: 1.75rem; }
 .btn.choice { min-height: 72px; }
 .btn.choice.selected { border: 2px solid var(--accent); }
 .link { background: none; border: 0; color: var(--muted); font: inherit; text-decoration: underline; cursor: pointer; min-height: 44px; width: auto; }
+main:focus { outline: none; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .samples { display: flex; flex-direction: column; gap: 12px; }
 .strip { display: flex; height: 28px; border-radius: 8px; overflow: hidden; }

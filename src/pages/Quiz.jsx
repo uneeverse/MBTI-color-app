@@ -35,7 +35,7 @@ export default function Quiz() {
 
   return (
     <main className="page">
-      <div className="progress" aria-live="polite">
+      <div className="progress">
         <span>
           {n}/{total}
         </span>
