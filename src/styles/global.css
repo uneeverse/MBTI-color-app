@@ -89,6 +89,13 @@ main:focus { outline: none; }
 .fallback code { user-select: all; font-weight: 700; }
 .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .actions .btn { word-break: keep-all; }
+.share-dialog { width: min(360px, calc(100vw - 40px)); padding: 0; border: 1px solid var(--line); border-radius: 16px; background: var(--bg); color: var(--text); text-align: center; }
+.share-dialog .share-body { padding: 24px 20px 12px; }
+.share-dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
+.share-dialog h2 { margin: 0 0 20px; font-size: 1.2rem; }
+.share-dialog .link { margin-top: 8px; }
+.share-options { display: flex; flex-direction: column; gap: 12px; }
+.share-options .btn { word-break: keep-all; }
 @media (max-width: 400px) {
   .actions { gap: 8px; }
   .actions .btn { padding: 12px 8px; font-size: 0.9rem; }
