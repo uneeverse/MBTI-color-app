@@ -47,6 +47,7 @@ export default function Result() {
 
   async function shareToKakao() {
     const result = await shareKakao({
+      code,
       url: shareUrl,
       title: `${SERVICE_NAME} ${code}: ${palette.name}`,
       description: '나의 MBTI 색 팔레트를 확인해 보세요',

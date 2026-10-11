@@ -33,7 +33,8 @@ function loadKakao() {
 }
 
 // 카카오톡 공유(피드 메시지). 반환: 'sent' | 'unavailable'(키 없음·SDK 로드 실패) | 'failed'
-export async function shareKakao({ url, title, description }) {
+// 이미지는 public/share/{유형}.png (scripts/make-share-images.mjs로 만든다)
+export async function shareKakao({ code, url, title, description }) {
   const kakao = await loadKakao()
   if (!kakao) return 'unavailable'
   const link = { mobileWebUrl: url, webUrl: url }
@@ -43,7 +44,7 @@ export async function shareKakao({ url, title, description }) {
       content: {
         title,
         description,
-        imageUrl: `${location.origin}/kakao-share.png`,
+        imageUrl: `${location.origin}/share/${code}.png`,
         link,
       },
       buttons: [{ title: '나도 해보기', link }],
